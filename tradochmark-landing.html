@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Träd och Mark - Trädgårdsmästare i Gävle | Professionell Trädvård & Trädgårdsdesign</title>
+    <meta name="description" content="Träd och Mark - Certifierad trädgårdsmästare i Gävle. Trädbeskärning, trädgårdsdesign och professionell skötsel över hela Gävleborg. Boka kostnadsfritt besök idag!">
+    <meta name="keywords" content="Trädgårdsmästare Gävle, Trädfällning Gävleborg, Trädgårdsskötsel, Trädbeskärning Gävle, Häckklippning, Trädgårdsdesign Gävleborg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-green: #2D4739;
+            --soft-beige: #F5F2ED;
+            --slate-grey: #4A4A4A;
+            --accent-green: #3D5A47;
+            --light-green: #E8EDE9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--slate-grey);
+            background: var(--soft-beige);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: var(--forest-green);
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-on-load {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--soft-beige) 0%, #EDEAE3 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%232D4739" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="800" height="800" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            padding-right: 2rem;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--light-green);
+            color: var(--forest-green);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--slate-grey);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        .hero-image-container {
+            position: relative;
+            height: 600px;
+            border-radius: 0;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: -20px 20px 60px rgba(45, 71, 57, 0.15);
+        }
+        
+        .hero-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            background: var(--forest-green);
+            border-radius: 0;
+            z-index: -1;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: var(--forest-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-green);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            left: 0;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(45, 71, 57, 0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            background: white;
+            position: relative;
+        }
+        
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--forest-green), transparent);
+            opacity: 0.2;
+        }
+        
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .services-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+        
+        .service-card {
+            padding: 3rem 2rem;
+            background: var(--soft-beige);
+            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--forest-green);
+            transition: width 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            width: 100%;
+        }
+        
+        .service-card:hover {
+            border-color: var(--light-green);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(45, 71, 57, 0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            color: var(--forest-green);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--slate-grey);
+            line-height: 1.8;
+            font-size: 0.975rem;
+        }
+        
+        .service-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.35rem 0.85rem;
+            background: white;
+            color: var(--forest-green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border-radius: 50px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            background: var(--soft-beige);
+            position: relative;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            box-shadow: 20px 20px 0 var(--forest-green);
+        }
+        
+        .about-content h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: var(--slate-grey);
+        }
+        
+        .about-highlight {
+            padding: 2rem;
+            background: white;
+            border-left: 4px solid var(--forest-green);
+            margin-top: 2rem;
+        }
+        
+        .about-highlight p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--forest-green);
+            font-weight: 500;
+        }
+        
+        /* Why Choose Section */
+        .why-choose {
+            padding: 8rem 5%;
+            background: var(--forest-green);
+            color: white;
+        }
+        
+        .why-choose .section-subtitle {
+            color: var(--light-green);
+        }
+        
+        .why-choose h2 {
+            color: white;
+        }
+        
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .feature p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            background: white;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+        
+        .contact-info h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .contact-detail svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            color: var(--forest-green);
+        }
+        
+        .contact-detail a {
+            color: var(--slate-grey);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-detail a:hover {
+            color: var(--forest-green);
+        }
+        
+        /* Form */
+        .contact-form {
+            background: var(--soft-beige);
+            padding: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--forest-green);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            background: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--forest-green);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: var(--forest-green);
+            color: white;
+            text-align: center;
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container,
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-image-container {
+                height: 400px;
+                order: -1;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-image {
+                box-shadow: 15px 15px 0 var(--forest-green);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .services,
+            .about,
+            .why-choose,
+            .contact {
+                padding: 4rem 5%;
+            }
+            
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge animate-on-load">Gävle & Mellansverige</div>
+                <h1 class="animate-on-load delay-1">Vi förverkligar din utemiljö i Gävleborg</h1>
+                <p class="hero-subtitle animate-on-load delay-2">Med passion för hantverket och certifierad kunskap skapar vi harmoniska trädgårdar och välskötta utemiljöer där natur möter design.</p>
+                <a href="#kontakt" class="cta-button animate-on-load delay-3">Boka kostnadsfritt besök</a>
+            </div>
+            <div class="hero-image-container animate-on-load delay-2">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=1000&fit=crop" alt="Professionell trädgårdsskötsel i Gävle" class="hero-image">
+                <div class="hero-accent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="tjanster">
+        <div class="section-header">
+            <div class="section-subtitle">Våra Tjänster</div>
+            <h2>Helhetsansvar för din trädgård</h2>
+            <p>Från trädbeskärning till trädgårdsdesign – vi erbjuder professionell trädgårdsskötsel för privat- och offentlig sektor i hela Gävleborg.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                </svg>
+                <h3>Trädbeskärning & Häckklippning</h3>
+                <p>Professionell trädbeskärning och häckklippning utförd av certifierade trädgårdsmästare i Gävle. Vi säkerställer trädens hälsa och skapar vackra former som förhöjer din trädgård.</p>
+                <span class="service-badge">Certifierad kunskap</span>
+            </div>
+            
+            <div class="service-card">
+                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                </svg>
+                <h3>Trädgårdsdesign & Plantering</h3>
+                <p>Vi skapar skräddarsydda trädgårdsdesigner som passar din vision och Gävleborgs klimat. Från konceptskiss till färdig plantering hjälper vi dig förverkliga din drömutemiljö.</p>
+                <span class="service-badge">Skräddarsytt</span>
+            </div>
+            
+            <div class="service-card">
+                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <h3>Skötsel & Underhåll</h3>
+                <p>Regelbunden trädgårdsskötsel för både privat och offentlig sektor. Vi ansvarar för allt från gräsklippning till säsongsplanteringar och håller din trädgård i toppskick året runt.</p>
+                <span class="service-badge">Privat & Offentligt</span>
+            </div>
+            
+            <div class="service-card">
+                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                <h3>Finplanering vid Nyproduktion</h3>
+                <p>Specialist på finplanering i samband med nybyggnation i Gävleborg. Vi förbereder marken perfekt för gräsmattor, planteringar och skapar grogrund för din framtida trädgård.</p>
+                <span class="service-badge">Nyproduktion</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="om-oss">
+        <div class="about-container">
+            <div>
+                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&h=600&fit=crop" alt="Träd och Mark - Trädgårdsmästare Gävle" class="about-image">
+            </div>
+            <div class="about-content">
+                <div class="section-subtitle">Om Oss</div>
+                <h2>Passion för hantverket sedan 2021</h2>
+                <p>Träd och Mark grundades 2021 med utgångspunkt i Gävle och en tydlig vision: att erbjuda professionell trädgårdsskötsel och trädfällning i Gävleborg med fokus på kvalitet, hållbarhet och lokalkännedom.</p>
+                <p>Vi arbetar över hela Mellansverige och vårt erfarna team av trädgårdsmästare kombinerar traditionellt hantverk med modern kunskap om växtmaterial och trädvård. Varje projekt, stort som litet, utförs med samma omsorg och precision.</p>
+                <div class="about-highlight">
+                    <p>"Vår drivkraft är att skapa utemiljöer där funktion och skönhet går hand i hand, anpassade efter det svenska klimatet och våra kunders unika behov."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="section-header">
+            <div class="section-subtitle">Varför Välja Oss</div>
+            <h2>Din partner för professionell trädgårdsskötsel</h2>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-number">01</div>
+                <h3>Lång Erfarenhet</h3>
+                <p>Våra certifierade trädgårdsmästare har mångårig erfarenhet av allt från trädbeskärning till omfattande trädgårdsdesign i Gävle och Mellansverige.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-number">02</div>
+                <h3>Fullt Försäkrade</h3>
+                <p>Vi är fullt försäkrade och certifierade vilket ger dig trygghet genom hela projektet. Din trädgård och fastighet är i säkra händer.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-number">03</div>
+                <h3>Lokalkännedom i Gävle</h3>
+                <p>Med djup förståelse för Gävleborgs klimat och växtförhållanden skapar vi hållbara lösningar som trivs i vår region.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="section-subtitle">Kontakta Oss</div>
+                <h2>Boka kostnadsfritt besök</h2>
+                <p>Är du redo att förverkliga din drömutemiljö? Kontakta oss idag för en kostnadsfri konsultation. Vi besöker dig i Gävle eller Gävleborg för att diskutera ditt projekt och ge dig ett skräddarsytt förslag.</p>
+                
+                <div class="contact-detail">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <a href="mailto:info@tradochmark.se">info@tradochmark.se</a>
+                </div>
+                
+                <div class="contact-detail">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <a href="tel:0709933085">070-993 30 85</a>
+                </div>
+                
+                <div class="contact-detail">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>Gävle, Gävleborg</span>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Namn *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefon *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-post</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Beskriv ditt ärende *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">Skicka förfrågan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Träd och Mark. Professionell trädgårdsmästare i Gävle | Trädfällning & Trädgårdsskötsel Gävleborg</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your backend
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Tack för din förfrågan! Vi återkommer inom kort.');
+            event.target.reset();
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and features
+        document.querySelectorAll('.service-card, .feature').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
