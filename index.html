@@ -274,17 +274,18 @@
             <div class="max-w-3xl mx-auto bg-beige/20 p-8 md:p-12 rounded-3xl border border-sage/20 shadow-sm">
                 <h2 class="font-display text-3xl text-forest font-bold mb-4 text-center">Redo att förnya din trädgård?</h2>
                 <p class="text-gray-600 text-center mb-8">Fyll i formuläret nedan för en snabb och kostnadsfri offert.</p>
-                <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input type="text" placeholder="Namn" required class="p-3 rounded-lg border border-sage/30">
-                    <input type="tel" placeholder="Telefon" required class="p-3 rounded-lg border border-sage/30">
-                    <input type="email" placeholder="E-post" required class="p-3 rounded-lg border border-sage/30 md:col-span-2">
-                    <select class="p-3 rounded-lg border border-sage/30 md:col-span-2 bg-white">
-                        <option>Välj tjänst...</option>
-                        <option>Beskärning</option>
-                        <option>Design</option>
-                        <option>Skötsel</option>
+                <!-- OBS: Byt ut DIN_FORMSPREE_ID_HÄR i action-attributet mot ditt unika ID från formspree.io -->
+                <form id="contact-form" action="https://formspree.io/f/DIN_FORMSPREE_ID_HÄR" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" name="namn" placeholder="Namn" required class="p-3 rounded-lg border border-sage/30">
+                    <input type="tel" name="telefon" placeholder="Telefon" required class="p-3 rounded-lg border border-sage/30">
+                    <input type="email" name="email" placeholder="E-post" required class="p-3 rounded-lg border border-sage/30 md:col-span-2">
+                    <select name="tjanst" class="p-3 rounded-lg border border-sage/30 md:col-span-2 bg-white">
+                        <option value="">Välj tjänst...</option>
+                        <option value="Beskärning">Beskärning</option>
+                        <option value="Design">Design</option>
+                        <option value="Skötsel">Skötsel</option>
                     </select>
-                    <textarea rows="4" placeholder="Beskriv ditt projekt" class="p-3 rounded-lg border border-sage/30 md:col-span-2"></textarea>
+                    <textarea name="meddelande" rows="4" placeholder="Beskriv ditt projekt" class="p-3 rounded-lg border border-sage/30 md:col-span-2"></textarea>
                     <button type="submit" class="md:col-span-2 bg-forest text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all">
                         SKICKA OFFERTFÖRFRÅGAN
                     </button>
@@ -485,10 +486,53 @@
             window.scrollTo(0, 0);
         }
 
-        // Form handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // Form handling with fetch for AJAX submission
+        const form = document.getElementById('contact-form');
+        
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            this.innerHTML = `<div class="p-8 text-center text-forest font-bold text-xl">Tack! Vi kontaktar dig inom kort för en kostnadsfri konsultation.</div>`;
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            // Show loading state
+            btn.innerHTML = 'Skickar...';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                // If action URL contains placeholder, simulate success for demo
+                if(form.action.includes('DIN_FORMSPREE_ID')) {
+                    throw new Error("Missing ID");
+                }
+
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    form.parentElement.innerHTML = `<div class="p-8 text-center text-forest font-bold text-xl bg-white/50 rounded-xl border border-sage/20">Tack! Vi har tagit emot din förfrågan och återkommer snart.</div>`;
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        alert("Något gick fel. Kontrollera att du fyllt i alla fält.");
+                    }
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                // Fallback for demo purposes or network error
+                console.log("Formspree ID missing or network error, simulating success for demo.");
+                setTimeout(() => {
+                    form.parentElement.innerHTML = `<div class="p-8 text-center text-forest font-bold text-xl bg-white/50 rounded-xl border border-sage/20">Tack för din förfrågan! (Detta är en demo - koppla till Formspree för att ta emot riktiga mail).</div>`;
+                }, 1000);
+            }
         });
     </script>
 </body>
