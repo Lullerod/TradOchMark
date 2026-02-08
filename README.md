@@ -15,7 +15,7 @@ för högre konvertering.
 
 *Kontakt formulär:*
 
-För att få formuläret att fungera på en statisk sida (utan egen backend-server) är det enklaste sättet att använda en tjänst som Formspree. Det är gratis för mindre volymer och kräver ingen komplicerad kodning.
+För att få formuläret att fungera på en statisk sida (utan egen backend-server) är det enklaste sättet att använda en tjänst som Formspree. Det är gratis för mindre volymer och kräver ingen komplicerad programmering.
 
 Här är hur det fungerar:
 - Skapa konto: Gå till formspree.io och registrera dig.
