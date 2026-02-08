@@ -13,11 +13,12 @@ för högre konvertering.
 
 
 
-#SUBMIT Form
+Kontakt formulär:
 
 För att få formuläret att fungera på en statisk sida (utan egen backend-server) är det enklaste sättet att använda en tjänst som Formspree. Det är gratis för mindre volymer och kräver ingen komplicerad kodning.
 
 Här är hur det fungerar:
+
 -Skapa konto: Gå till formspree.io och registrera dig.
 -Nytt formulär: Skapa ett nytt formulär ("Create new form") och lägg till din e-postadress dit du vill ha svaren.
 -Få ditt ID: Du får en länk som ser ut ungefär så här: https://formspree.io/f/xmqbwyan.
