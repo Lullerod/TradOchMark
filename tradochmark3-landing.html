@@ -38,17 +38,25 @@
                         url('https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&q=80&w=1600') center/cover;
         }
         
-        /* Custom UI transitions */
         .service-card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(45, 90, 39, 0.1);
         }
 
-        /* Image comparison slider simulation */
         .comparison-slider {
             position: relative;
             overflow: hidden;
             border-radius: 0.75rem;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -59,19 +67,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex items-center space-x-2">
+                <button onclick="showPage('home')" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
                     <svg class="w-10 h-10 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12a4 4 0 100-8 4 4 0 000 8zM12 12v6m-4 0h8" />
                     </svg>
                     <span class="font-display font-bold text-2xl text-forest tracking-tight">Träd & Mark</span>
-                </div>
+                </button>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="hover:text-forest transition-colors font-semibold">Tjänster</a>
-                    <a href="#about" class="hover:text-forest transition-colors font-semibold">Varför oss</a>
-                    <a href="#quote" class="bg-forest text-white px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all shadow-md">Fri Offert</a>
+                    <button onclick="showPage('home'); setTimeout(() => document.getElementById('services').scrollIntoView(), 100)" class="hover:text-forest transition-colors font-semibold">Tjänster</button>
+                    <button onclick="showPage('home'); setTimeout(() => document.getElementById('about').scrollIntoView(), 100)" class="hover:text-forest transition-colors font-semibold">Varför oss</button>
+                    <button onclick="showPage('home'); setTimeout(() => document.getElementById('company').scrollIntoView(), 100)" class="hover:text-forest transition-colors font-semibold">Om oss</button>
+                    <button onclick="showPage('home'); setTimeout(() => document.getElementById('quote').scrollIntoView(), 100)" class="bg-forest text-white px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all shadow-md">Fri Offert</button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -86,268 +95,400 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative hero-gradient min-h-[85vh] flex items-center text-white px-4 overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full py-20 relative z-10">
-            <div class="max-w-2xl">
-                <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
-                    Professionell trädgårdshjälp i Gävle & Mellansverige
-                </h1>
-                <p class="text-lg md:text-xl text-beige/90 mb-10 leading-relaxed">
-                    Vi skapar, förvaltar och utvecklar gröna rum – från precisionsbeskärning till komplett design och löpande skötsel. Låt oss ta hand om det tunga arbetet så att du kan njuta av resultatet.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#quote" class="bg-forest text-white px-8 py-4 rounded-lg font-bold text-center hover:scale-105 transition-transform shadow-xl">
-                        Begär Kostnadsfri Offert
-                    </a>
-                    <a href="#contact" class="border-2 border-white/80 text-white px-8 py-4 rounded-lg font-bold text-center hover:bg-white/10 transition-colors">
-                        Boka Konsultation
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Services Section -->
-    <section id="services" class="py-24 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-3xl md:text-4xl text-forest font-bold mb-4">Vi gör trädgårdsdrömmar till verklighet</h2>
-                <div class="h-1 w-20 bg-sage mx-auto rounded"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">Trädbeskärning & Häck</h3>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">Expertis inom JAS-perioden och säkerhetsbeskärning för långvarig växtkraft.</p>
-                    <span class="mt-auto font-semibold text-forest text-sm italic">Friskare träd och välformad trädgård</span>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="service-card p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">Trädgårdsdesign</h3>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">Vi ritar upp din drömträdgård från grunden med fokus på livskvalitet.</p>
-                    <span class="mt-auto font-semibold text-forest text-sm italic">Ökat fastighetsvärde och harmoni</span>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">Plantering & Skötsel</h3>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">Rätt växt på rätt plats med fokus på hållbarhet och lokala förhållanden.</p>
-                    <span class="mt-auto font-semibold text-forest text-sm italic">Prunkande rabatt utan krångel</span>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">Underhållsservice</h3>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">Löpande skötsel för privatpersoner och BRF:er som vill ha en snygg miljö.</p>
-                    <span class="mt-auto font-semibold text-forest text-sm italic">Tid över till annat – vi sköter resten</span>
-                </div>
-            </div>
-
-            <!-- RUT Ad -->
-            <div class="mt-16 p-6 bg-forest text-white rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between">
-                <div class="flex items-center space-x-4 mb-4 md:mb-0">
-                    <div class="bg-white/20 p-3 rounded-full">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <p class="text-lg font-semibold">Glöm inte RUT-avdraget!</p>
-                </div>
-                <p class="text-sm md:text-base text-beige/80 max-w-xl md:text-right">
-                    De flesta av våra tjänster ger dig <strong>50% rabatt</strong> på arbetskostnaden direkt på fakturan. Vi sköter all administration med Skatteverket.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Us Section -->
-    <section id="about" class="py-24 px-4 bg-beige/50">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="font-display text-3xl md:text-4xl text-forest font-bold mb-8">Varför välja Träd & Mark?</h2>
-                
-                <div class="space-y-8">
-                    <div class="flex space-x-4">
-                        <div class="text-3xl">🌳</div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Lokal expertis</h4>
-                            <p class="text-gray-600">Vi kan Gävles unika klimat och jordmån. Vi rekommenderar växter som faktiskt trivs i vår zon.</p>
-                        </div>
-                    </div>
-                    <div class="flex space-x-4">
-                        <div class="text-3xl">🪓</div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Erfaren personal</h4>
-                            <p class="text-gray-600">Utbildade trädgårdsmästare med öga för detaljer och utbildning inom säker trädfällning.</p>
-                        </div>
-                    </div>
-                    <div class="flex space-x-4">
-                        <div class="text-3xl">✨</div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Kvalitetsgaranti</h4>
-                            <p class="text-gray-600">Vi lämnar inte projektet förrän du är 100% nöjd. Vårt rykte är vår främsta tillgång.</p>
-                        </div>
-                    </div>
-                    <div class="flex space-x-4">
-                        <div class="text-3xl">🤝</div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">Totalentreprenad</h4>
-                            <p class="text-gray-600">Från första skiss till färdigställd utemiljö. Vi hanterar planering, inköp och utförande.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Case Study / Social Proof -->
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-sage/10">
-                <h3 class="font-display text-2xl font-bold text-forest mb-6">Projekt i fokus: Före & Efter</h3>
-                
-                <div class="comparison-slider aspect-video bg-gray-200 mb-6">
-                    <!-- Simulerad före/efter-bild -->
-                    <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=800" alt="Välskött trädgård" class="w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 bg-forest text-white px-3 py-1 rounded text-sm font-bold">Resultatet</div>
-                </div>
-
-                <div class="bg-beige/30 p-6 rounded-xl italic text-gray-700 relative">
-                    <span class="absolute top-2 left-2 text-4xl text-sage/40 font-serif">"</span>
-                    <p class="relative z-10 pl-4">
-                        "Träd & Mark förvandlade vår vildvuxna häck till ett mästerverk. Snabba, trevliga och otroligt kunniga! Vi rekommenderar dem till alla som vill ha ordning i trädgården."
+    <!-- MAIN HOME PAGE -->
+    <main id="home-page" class="view-section">
+        <!-- Hero Section -->
+        <header class="relative hero-gradient min-h-[85vh] flex items-center text-white px-4 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full py-20 relative z-10">
+                <div class="max-w-2xl">
+                    <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
+                        Professionell trädgårdshjälp i Gävle & Mellansverige
+                    </h1>
+                    <p class="text-lg md:text-xl text-beige/90 mb-10 leading-relaxed">
+                        Vi skapar, förvaltar och utvecklar gröna rum – från precisionsbeskärning till komplett design och löpande skötsel. Låt oss ta hand om det tunga arbetet så att du kan njuta av resultatet.
                     </p>
-                    <div class="mt-4 flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-sage rounded-full flex items-center justify-center text-white font-bold">E</div>
-                        <span class="font-bold text-forest">Erik, Gävle Strand</span>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#quote" class="bg-forest text-white px-8 py-4 rounded-lg font-bold text-center hover:scale-105 transition-transform shadow-xl">
+                            Begär Kostnadsfri Offert
+                        </a>
+                        <a href="#contact" class="border-2 border-white/80 text-white px-8 py-4 rounded-lg font-bold text-center hover:bg-white/10 transition-colors">
+                            Boka Konsultation
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Contact Form Section -->
-    <section id="quote" class="py-24 px-4 bg-white">
-        <div class="max-w-4xl mx-auto text-center mb-12">
-            <h2 class="font-display text-3xl md:text-4xl text-forest font-bold mb-4">Redo att förnya din trädgård?</h2>
-            <p class="text-gray-600">Fyll i formuläret nedan för en snabb och kostnadsfri offert. Vi återkopplar oftast inom 24 timmar.</p>
-        </div>
+        <!-- Services Section -->
+        <section id="services" class="py-24 px-4 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-3xl md:text-4xl text-forest font-bold mb-4">Vi gör trädgårdsdrömmar till verklighet</h2>
+                    <p class="text-gray-500 mb-8">Klicka på en tjänst för att läsa mer om hur vi arbetar.</p>
+                    <div class="h-1 w-20 bg-sage mx-auto rounded"></div>
+                </div>
 
-        <div class="max-w-3xl mx-auto bg-beige/20 p-8 md:p-12 rounded-3xl border border-sage/20 shadow-sm">
-            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="flex flex-col">
-                    <label class="text-sm font-bold text-forest mb-2">Namn</label>
-                    <input type="text" placeholder="Ditt fullständiga namn" required class="p-3 rounded-lg border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service 1 -->
+                    <button onclick="showDetail('pruning')" class="service-card text-left p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3">Trädbeskärning & Häck</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">Expertis inom JAS-perioden och säkerhetsbeskärning för långvarig växtkraft.</p>
+                        <span class="mt-auto font-semibold text-forest text-sm italic underline underline-offset-4 decoration-sage/30">Läs mer om vårt arbetssätt →</span>
+                    </button>
+
+                    <!-- Service 2 -->
+                    <button onclick="showDetail('design')" class="service-card text-left p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3">Trädgårdsdesign</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">Vi ritar upp din drömträdgård från grunden med fokus på livskvalitet.</p>
+                        <span class="mt-auto font-semibold text-forest text-sm italic underline underline-offset-4 decoration-sage/30">Läs mer om vårt arbetssätt →</span>
+                    </button>
+
+                    <!-- Service 3 -->
+                    <button onclick="showDetail('planting')" class="service-card text-left p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3">Plantering & Skötsel</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">Rätt växt på rätt plats med fokus på hållbarhet och lokala förhållanden.</p>
+                        <span class="mt-auto font-semibold text-forest text-sm italic underline underline-offset-4 decoration-sage/30">Läs mer om vårt arbetssätt →</span>
+                    </button>
+
+                    <!-- Service 4 -->
+                    <button onclick="showDetail('maintenance')" class="service-card text-left p-8 bg-beige/30 rounded-2xl border border-sage/10 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-sage/20 text-forest rounded-full flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3">Underhållsservice</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">Löpande skötsel för privatpersoner och BRF:er som vill ha en snygg miljö.</p>
+                        <span class="mt-auto font-semibold text-forest text-sm italic underline underline-offset-4 decoration-sage/30">Läs mer om vårt arbetssätt →</span>
+                    </button>
                 </div>
-                <div class="flex flex-col">
-                    <label class="text-sm font-bold text-forest mb-2">Telefon</label>
-                    <input type="tel" placeholder="070-000 00 00" required class="p-3 rounded-lg border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage">
+
+                <!-- RUT Ad -->
+                <div class="mt-16 p-6 bg-forest text-white rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                        <div class="bg-white/20 p-3 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <p class="text-lg font-semibold">Glöm inte RUT-avdraget!</p>
+                    </div>
+                    <p class="text-sm md:text-base text-beige/80 max-w-xl md:text-right">
+                        De flesta av våra tjänster ger dig <strong>50% rabatt</strong> på arbetskostnaden direkt på fakturan. Vi sköter all administration med Skatteverket.
+                    </p>
                 </div>
-                <div class="flex flex-col md:col-span-2">
-                    <label class="text-sm font-bold text-forest mb-2">E-post</label>
-                    <input type="email" placeholder="namn@epost.se" required class="p-3 rounded-lg border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage">
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section id="about" class="py-24 px-4 bg-beige/50">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl text-forest font-bold mb-8">Varför välja Träd & Mark?</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex space-x-4">
+                            <div class="text-3xl">🌳</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Lokal expertis</h4>
+                                <p class="text-gray-600">Vi kan Gävles unika klimat och jordmån. Vi rekommenderar växter som faktiskt trivs i vår zon.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="text-3xl">🪓</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Erfaren personal</h4>
+                                <p class="text-gray-600">Utbildade trädgårdsmästare med öga för detaljer och utbildning inom säker trädfällning.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="text-3xl">✨</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Kvalitetsgaranti</h4>
+                                <p class="text-gray-600">Vi lämnar inte projektet förrän du är 100% nöjd. Vårt rykte är vår främsta tillgång.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-col md:col-span-2">
-                    <label class="text-sm font-bold text-forest mb-2">Önskad tjänst</label>
-                    <select class="p-3 rounded-lg border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage bg-white">
-                        <option>Beskärning & Häckklippning</option>
-                        <option>Trädgårdsdesign</option>
-                        <option>Löpande skötsel</option>
-                        <option>Annat projekt</option>
+
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-sage/10">
+                    <h3 class="font-display text-2xl font-bold text-forest mb-6">Projekt i fokus: Före & Efter</h3>
+                    <div class="comparison-slider aspect-video bg-gray-200 mb-6">
+                        <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=800" alt="Välskött trädgård" class="w-full h-full object-cover">
+                        <div class="absolute bottom-4 left-4 bg-forest text-white px-3 py-1 rounded text-sm font-bold">Resultatet</div>
+                    </div>
+                    <div class="bg-beige/30 p-6 rounded-xl italic text-gray-700">
+                        <p>"Träd & Mark förvandlade vår vildvuxna häck till ett mästerverk. Snabba, trevliga och otroligt kunniga!"</p>
+                        <div class="mt-4 flex items-center space-x-3 text-sm">
+                            <div class="w-8 h-8 bg-sage rounded-full flex items-center justify-center text-white font-bold text-xs">E</div>
+                            <span class="font-bold text-forest uppercase tracking-wider">Erik, Gävle Strand</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Section (Om oss) -->
+        <section id="company" class="py-24 px-4 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Text Content -->
+                    <div>
+                        <h2 class="font-display text-3xl md:text-4xl text-forest font-bold mb-6">Det Gröna Rummet – Vår Historia</h2>
+                        <div class="h-1 w-20 bg-sage rounded mb-8"></div>
+                        <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                            Träd & Mark startades med en enkel vision: att erbjuda professionell trädgårdshjälp med rötterna i Gävleborgs mylla. Vi är ett sammansvetsat team av trädgårdsmästare, arborister och landskapsarkitekter som brinner för utemiljöer.
+                        </p>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            Vi tror på långsiktiga relationer – både med våra kunder och med naturen. Därför arbetar vi alltid med hållbara metoder, ekologiska val och maskiner som minimerar vårt avtryck.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="p-4 bg-beige/30 rounded-lg border-l-4 border-forest">
+                                <span class="block text-3xl font-bold text-forest mb-1">15+</span>
+                                <span class="text-sm text-gray-600">Års erfarenhet</span>
+                            </div>
+                            <div class="p-4 bg-beige/30 rounded-lg border-l-4 border-forest">
+                                <span class="block text-3xl font-bold text-forest mb-1">500+</span>
+                                <span class="text-sm text-gray-600">Nöjda kunder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Grid/Placeholder -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1599687351724-dfa3c4ff81b1?auto=format&fit=crop&q=80&w=600" alt="Vårt team" class="rounded-2xl shadow-lg mt-8 w-full h-full object-cover transform translate-y-4">
+                        <img src="https://images.unsplash.com/photo-1622383563227-0440114a8790?auto=format&fit=crop&q=80&w=600" alt="Arbete i trädgården" class="rounded-2xl shadow-lg mb-8 w-full h-full object-cover transform -translate-y-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="quote" class="py-24 px-4 bg-white">
+            <div class="max-w-3xl mx-auto bg-beige/20 p-8 md:p-12 rounded-3xl border border-sage/20 shadow-sm">
+                <h2 class="font-display text-3xl text-forest font-bold mb-4 text-center">Redo att förnya din trädgård?</h2>
+                <p class="text-gray-600 text-center mb-8">Fyll i formuläret nedan för en snabb och kostnadsfri offert.</p>
+                <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Namn" required class="p-3 rounded-lg border border-sage/30">
+                    <input type="tel" placeholder="Telefon" required class="p-3 rounded-lg border border-sage/30">
+                    <input type="email" placeholder="E-post" required class="p-3 rounded-lg border border-sage/30 md:col-span-2">
+                    <select class="p-3 rounded-lg border border-sage/30 md:col-span-2 bg-white">
+                        <option>Välj tjänst...</option>
+                        <option>Beskärning</option>
+                        <option>Design</option>
+                        <option>Skötsel</option>
                     </select>
-                </div>
-                <div class="flex flex-col md:col-span-2">
-                    <label class="text-sm font-bold text-forest mb-2">Beskriv ditt projekt</label>
-                    <textarea rows="4" placeholder="Berätta gärna lite om vad du behöver hjälp med..." class="p-3 rounded-lg border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage"></textarea>
-                </div>
-                <div class="md:col-span-2">
-                    <button type="submit" class="w-full bg-forest text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all active:scale-[0.98]">
+                    <textarea rows="4" placeholder="Beskriv ditt projekt" class="p-3 rounded-lg border border-sage/30 md:col-span-2"></textarea>
+                    <button type="submit" class="md:col-span-2 bg-forest text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all">
                         SKICKA OFFERTFÖRFRÅGAN
                     </button>
-                    <p class="text-xs text-center mt-4 text-gray-500 italic">Vi behandlar dina uppgifter enligt GDPR för att kunna besvara din förfrågan.</p>
-                </div>
-            </form>
-            <div id="form-message" class="hidden mt-6 p-4 bg-green-100 text-green-800 rounded-lg text-center font-bold">
-                Tack! Din förfrågan är skickad. Vi hörs snart!
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- SERVICE DETAIL PAGE (HIDDEN BY DEFAULT) -->
+    <main id="detail-page" class="hidden min-h-screen bg-white pb-24 fade-in">
+        <!-- Detail Header -->
+        <div class="bg-forest text-white py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <button onclick="showPage('home')" class="flex items-center space-x-2 text-beige hover:text-white mb-8 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span>Tillbaka till start</span>
+                </button>
+                <h1 id="detail-title" class="font-display text-4xl md:text-5xl font-bold mb-4">Tjänstenamn</h1>
+                <p id="detail-tagline" class="text-xl text-sage">Professionell hjälp med öga för detaljer.</p>
             </div>
         </div>
-    </section>
+
+        <div class="max-w-7xl mx-auto px-4 mt-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <!-- Details & Arbetssätt -->
+            <div class="lg:col-span-2">
+                <section class="mb-16">
+                    <h2 class="font-display text-3xl text-forest font-bold mb-6 italic">Vårt Arbetssätt</h2>
+                    <p class="text-gray-600 text-lg mb-10">Vi tror på transparens och kvalitet i varje steg. Så här går det till när du anlitar Träd & Mark för <span id="detail-name-small">din trädgård</span>:</p>
+                    
+                    <div class="space-y-12">
+                        <!-- Step 1 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-sage text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-forest mb-2">Kostnadsfri Konsultation</h3>
+                                <p class="text-gray-600">Vi kommer ut till dig i Gävle eller Mellansverige för att se trädgården med egna ögon. Vi diskuterar dina önskemål, förutsättningar och budget.</p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-sage text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-forest mb-2">Skräddarsydd Offert</h3>
+                                <p class="text-gray-600">Baserat på vårt möte tar vi fram en tydlig offert där allt ingår. Vi specificerar även hur mycket du sparar genom RUT-avdraget.</p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-sage text-white rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-forest mb-2">Proffsigt Utförande</h3>
+                                <p class="text-gray-600">Våra utbildade trädgårdsmästare utför arbetet med moderna verktyg och stort säkerhetstänk. Vi lämnar trädgården städad och snygg efteråt.</p>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-sage text-white rounded-full flex items-center justify-center font-bold text-xl">4</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-forest mb-2">Uppföljning & Garanti</h3>
+                                <p class="text-gray-600">Vi går igenom resultatet tillsammans med dig för att säkerställa att du är helt nöjd. Vi ger dig även skötselråd för framtiden.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div id="detail-content" class="prose prose-forest lg:prose-lg max-w-none text-gray-600">
+                    <!-- Specific content injected here -->
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-8">
+                <div class="bg-beige/40 p-8 rounded-2xl border border-sage/20">
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Visste du att...</h3>
+                    <p id="detail-fact" class="text-sm text-gray-600 italic">Vi har lång erfarenhet av just denna typ av projekt i Gävle-området.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl border-2 border-forest shadow-lg">
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Boka denna tjänst</h3>
+                    <p class="text-sm text-gray-500 mb-6 font-semibold">Få svar inom 24 timmar!</p>
+                    <button onclick="showPage('home'); setTimeout(() => document.getElementById('quote').scrollIntoView(), 100)" class="w-full bg-forest text-white py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
+                        Begär Offert Nu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-forest text-beige py-16 px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-            <!-- Brand -->
+    <footer class="bg-forest text-beige py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
             <div>
-                <div class="flex items-center space-x-2 mb-6">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a4 4 0 100-8 4 4 0 000 8zM12 12v6m-4 0h8" /></svg>
-                    <span class="font-display font-bold text-2xl">Träd & Mark</span>
-                </div>
-                <p class="text-sm leading-relaxed text-beige/80">
-                    Din lokala partner för allt inom trädgård i Gävleborg och Mellansverige. Vi kombinerar hantverkskunnande med modern design för hållbara utemiljöer.
-                </p>
+                <span class="font-display font-bold text-2xl block mb-6">Träd & Mark</span>
+                <p class="text-sm text-beige/80">Din lokala partner för allt inom trädgård i Gävleborg och Mellansverige.</p>
             </div>
-
-            <!-- Contact -->
             <div>
-                <h4 class="font-bold text-xl mb-6 border-b border-white/20 pb-2">Kontaktuppgifter</h4>
-                <ul class="space-y-4">
-                    <li class="flex items-center space-x-3">
-                        <svg class="w-5 h-5 opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                        <span>Gävle, Mellansverige</span>
-                    </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="w-5 h-5 opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                        <span>070-993 30 85</span>
-                    </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="w-5 h-5 opacity-70" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                        <span>info@tradochmark.se</span>
-                    </li>
-                </ul>
+                <h4 class="font-bold text-xl mb-6">Kontakt</h4>
+                <p class="text-sm">Gävle, Mellansverige</p>
+                <p class="text-sm">070-993 30 85</p>
+                <p class="text-sm">info@tradochmark.se</p>
             </div>
-
-            <!-- Social -->
             <div>
-                <h4 class="font-bold text-xl mb-6 border-b border-white/20 pb-2">Följ oss för inspiration</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="#" class="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
-                        <span class="sr-only">Facebook</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                    </a>
-                </div>
-                <div class="mt-10 pt-10 border-t border-white/10 text-xs text-beige/50">
-                    &copy; 2024 Träd & Mark i Gävle. Alla rättigheter reserverade.
+                <h4 class="font-bold text-xl mb-6">Följ oss</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#" class="opacity-70 hover:opacity-100 transition-opacity">Instagram</a>
+                    <a href="#" class="opacity-70 hover:opacity-100 transition-opacity">Facebook</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Form submission simulation
+        const serviceData = {
+            pruning: {
+                title: "Trädbeskärning & Häck",
+                tagline: "Hållbara snitt för en friskare framtid.",
+                small: "din beskärning",
+                fact: "Beskärning under JAS-månaderna (juli, augusti, september) är ofta bäst för träden då de läker snabbare.",
+                content: `
+                    <h4 class="text-forest font-bold text-2xl mb-4">Varför anlita oss för beskärning?</h4>
+                    <p class="mb-6">Att beskära träd kräver både kunskap om växtfysiologi och rätt utrustning. Vi utför allt från försiktig kronrensning till mer omfattande säkerhetsbeskärning. Vi ser till att trädet behåller sin naturliga form samtidigt som vi främjar tillväxt och minskar risk för sjukdomar.</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                        <li>Certifierade trädvårdare</li>
+                        <li>Bortforsling av avfall ingår som tillval</li>
+                        <li>Fokus på både estetik och säkerhet</li>
+                    </ul>
+                `
+            },
+            design: {
+                title: "Trädgårdsdesign",
+                tagline: "Vi ritar visionen du kan leva i.",
+                small: "din trädgårdsdesign",
+                fact: "En välplanerad trädgård kan öka en fastighets värde med upp till 15% enligt flera studier.",
+                content: `
+                    <h4 class="text-forest font-bold text-2xl mb-4">Designprocessen</h4>
+                    <p class="mb-6">Varje tomt är unik. Vi tittar på ljusförhållanden, vind, jordmån och hur du vill använda din yta. Vi skapar ritningar som fungerar både nu och om tio år när växterna vuxit till sig.</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                        <li>3D-visualiseringar och skisser</li>
+                        <li>Växtval anpassade för zon 4-5</li>
+                        <li>Materialval som harmonierar med husets arkitektur</li>
+                    </ul>
+                `
+            },
+            planting: {
+                title: "Plantering & Skötsel",
+                tagline: "Livskraft från rötterna och upp.",
+                small: "dina planteringar",
+                fact: "Vi använder uteslutande kvalitetsjord och gödsel anpassat för Mellansveriges specifika jordarter.",
+                content: `
+                    <h4 class="text-forest font-bold text-2xl mb-4">Från frö till färdig oas</h4>
+                    <p class="mb-6">Att plantera rätt är en konst. Vi säkerställer rätt dränering, rätt djup och rätt näring för varje specifik planta. Vi hjälper dig även att etablera nya rabatter eller anlägga gräsmattor som håller för spring och lek.</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                        <li>Kompletta inköp från pålitliga plantskolor</li>
+                        <li>Etableringsbevattning och skötselplan</li>
+                        <li>Hållbara och ekologiska odlingsmetoder</li>
+                    </ul>
+                `
+            },
+            maintenance: {
+                title: "Underhållsservice",
+                tagline: "Njut mer, arbeta mindre.",
+                small: "ditt trädgårdsunderhåll",
+                fact: "Våra skötselavtal är populära bland både privatpersoner och bostadsrättsföreningar i centrala Gävle.",
+                content: `
+                    <h4 class="text-forest font-bold text-2xl mb-4">Låt oss ta hand om det tråkiga</h4>
+                    <p class="mb-6">Vi erbjuder regelbundet underhåll så att din trädgård alltid ser representativ ut. Det kan innefatta gräsklippning, ogräsrensning, gödsling och höststädning. Vi skräddarsyr ett paket som passar just dina behov.</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                        <li>Fast pris per månad eller timarvode</li>
+                        <li>Professionella maskiner som låter mindre och klipper bättre</li>
+                        <li>Vi kommer på utsatta tider – varje gång</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showPage(pageId) {
+            document.querySelectorAll('.view-section, main').forEach(p => p.classList.add('hidden'));
+            if(pageId === 'home') {
+                document.getElementById('home-page').classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function showDetail(serviceKey) {
+            const data = serviceData[serviceKey];
+            if(!data) return;
+
+            document.getElementById('home-page').classList.add('hidden');
+            const detailPage = document.getElementById('detail-page');
+            detailPage.classList.remove('hidden');
+
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-tagline').innerText = data.tagline;
+            document.getElementById('detail-name-small').innerText = data.small;
+            document.getElementById('detail-fact').innerText = data.fact;
+            document.getElementById('detail-content').innerHTML = data.content;
+
+            window.scrollTo(0, 0);
+        }
+
+        // Form handling
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            this.classList.add('hidden');
-            document.getElementById('form-message').classList.remove('hidden');
-        });
-
-        // Simple Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        menuBtn.addEventListener('click', () => {
-            // For this demo, we'll just log or alert. In a real app, you'd toggle a side menu.
-            console.log('Mobile menu clicked');
+            this.innerHTML = `<div class="p-8 text-center text-forest font-bold text-xl">Tack! Vi kontaktar dig inom kort för en kostnadsfri konsultation.</div>`;
         });
     </script>
 </body>
