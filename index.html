@@ -39,13 +39,11 @@
     <style>
         /* Custom Styles for the Hero Image */
         .hero-section {
-            /* Using the uploaded image path. 
-               Added a gradient overlay (black to transparent) to make white text readable over the sky/clouds */
             background: linear-gradient(to right, rgba(15, 28, 21, 0.85) 0%, rgba(15, 28, 21, 0.4) 100%), 
                         url('473574932_616894497380406_4172605610191797859_n.jpg');
             background-size: cover;
-            background-position: center bottom; /* Anchor to bottom to show flowers/van */
-            background-attachment: fixed; /* Parallax effect */
+            background-position: center bottom; 
+            background-attachment: fixed;
         }
         
         /* Interactive Cards */
@@ -55,7 +53,7 @@
         
         .service-card:hover {
             transform: translateY(-8px);
-            background-color: #243E2E; /* Lighter on hover */
+            background-color: #243E2E; 
             border-color: #4E8B5D;
         }
 
@@ -93,11 +91,9 @@
             <div class="flex justify-between items-center h-24">
                 <!-- Logo -->
                 <button onclick="showPage('home')" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-                    <!-- Using the uploaded inverted logo -->
-                    <img src="Logo-beige-bright.png" alt="S A Träd & Mark Logo" class="h-12 w-auto object-contain" style="">
+                    <img src="Logo-beige-bright.png" alt="S A Träd & Mark Logo" class="h-12 w-auto object-contain">
                     <div class="flex flex-col items-start">
                         <span class="font-display font-bold text-xl tracking-wider uppercase leading-none text-beigh">Träd & Mark</span>
-                        <!--<span class="text-xs text-sage tracking-widest uppercase">Entreprenad</span>--> 
                     </div>
                 </button>
 
@@ -106,7 +102,6 @@
                     <button onclick="showPage('home'); setTimeout(() => document.getElementById('services').scrollIntoView(), 100)" class="hover:text-forest transition-colors font-semibold text-sm tracking-wide uppercase">Tjänster</button>
                     <button onclick="showPage('home'); setTimeout(() => document.getElementById('about').scrollIntoView(), 100)" class="hover:text-forest transition-colors font-semibold text-sm tracking-wide uppercase">Varför oss</button>
                     <button onclick="showPage('home'); setTimeout(() => document.getElementById('company').scrollIntoView(), 100)" class="hover:text-forest transition-colors font-semibold text-sm tracking-wide uppercase">Om oss</button>
-                    <!-- Updated Button Text -->
                     <button onclick="showPage('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="bg-forest text-white px-6 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all shadow-md uppercase tracking-wider text-sm border border-transparent hover:border-white/20">
                         Kontakta Oss
                     </button>
@@ -126,7 +121,7 @@
 
     <!-- MAIN HOME PAGE -->
     <main id="home-page" class="view-section">
-        <!-- Hero Section with New Image -->
+        <!-- Hero Section -->
         <header class="relative hero-section min-h-[90vh] flex items-center px-4">
             <div class="max-w-7xl mx-auto w-full py-20 relative z-10">
                 <div class="max-w-2xl">
@@ -157,44 +152,40 @@
                     <div class="h-1 w-20 bg-forest mx-auto rounded"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Service 1 -->
-                    <button onclick="showDetail('pruning')" class="service-card text-left p-8 bg-cardbg rounded-xl border border-white/5 flex flex-col items-start group">
-                        <div class="w-14 h-14 bg-forest/20 text-forest rounded-lg flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <button onclick="showDetail('pruning')" class="service-card text-left p-10 bg-cardbg rounded-2xl border border-white/5 flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 bg-forest/10 text-forest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-forest group-hover:text-white transition-all duration-300">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </div>
-                        <h3 class="font-display text-xl font-bold mb-3 text-white">Trädbeskärning</h3>
-                        <p class="text-sage mb-6 text-sm leading-relaxed">Säkerhetsbeskärning och trädvård under JAS-perioden för optimal tillväxt.</p>
+                        <h3 class="font-display text-2xl font-bold mb-6 text-white">Trädbeskärning & Häckklippning</h3>
                         <span class="mt-auto font-semibold text-forest text-sm uppercase tracking-wider group-hover:text-white transition-colors">Läs mer &rarr;</span>
                     </button>
 
                     <!-- Service 2 -->
-                    <button onclick="showDetail('design')" class="service-card text-left p-8 bg-cardbg rounded-xl border border-white/5 flex flex-col items-start group">
-                        <div class="w-14 h-14 bg-forest/20 text-forest rounded-lg flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    <button onclick="showDetail('design')" class="service-card text-left p-10 bg-cardbg rounded-2xl border border-white/5 flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 bg-forest/10 text-forest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-forest group-hover:text-white transition-all duration-300">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         </div>
-                        <h3 class="font-display text-xl font-bold mb-3 text-white">Trädgårdsdesign</h3>
-                        <p class="text-sage mb-6 text-sm leading-relaxed">Vi ritar upp din drömträdgård från grunden med fokus på livskvalitet.</p>
+                        <h3 class="font-display text-2xl font-bold mb-6 text-white">Trädgårdsdesign</h3>
                         <span class="mt-auto font-semibold text-forest text-sm uppercase tracking-wider group-hover:text-white transition-colors">Läs mer &rarr;</span>
                     </button>
 
                     <!-- Service 3 -->
-                    <button onclick="showDetail('planting')" class="service-card text-left p-8 bg-cardbg rounded-xl border border-white/5 flex flex-col items-start group">
-                        <div class="w-14 h-14 bg-forest/20 text-forest rounded-lg flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                    <button onclick="showDetail('planting')" class="service-card text-left p-10 bg-cardbg rounded-2xl border border-white/5 flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 bg-forest/10 text-forest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-forest group-hover:text-white transition-all duration-300">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
                         </div>
-                        <h3 class="font-display text-xl font-bold mb-3 text-white">Entreprenad</h3>
-                        <p class="text-sage mb-6 text-sm leading-relaxed">Markarbeten, plantering och anläggning. Rätt växt på rätt plats.</p>
+                        <h3 class="font-display text-2xl font-bold mb-6 text-white">Planteringar & skötseluppdrag</h3>
                         <span class="mt-auto font-semibold text-forest text-sm uppercase tracking-wider group-hover:text-white transition-colors">Läs mer &rarr;</span>
                     </button>
 
                     <!-- Service 4 -->
-                    <button onclick="showDetail('maintenance')" class="service-card text-left p-8 bg-cardbg rounded-xl border border-white/5 flex flex-col items-start group">
-                        <div class="w-14 h-14 bg-forest/20 text-forest rounded-lg flex items-center justify-center mb-6 group-hover:bg-forest group-hover:text-white transition-colors">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <button onclick="showDetail('entreprenad')" class="service-card text-left p-10 bg-cardbg rounded-2xl border border-white/5 flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 bg-forest/10 text-forest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-forest group-hover:text-white transition-all duration-300">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
-                        <h3 class="font-display text-xl font-bold mb-3 text-white">Underhåll</h3>
-                        <p class="text-sage mb-6 text-sm leading-relaxed">Löpande skötsel för privatpersoner och BRF:er som vill ha en snygg miljö.</p>
+                        <h3 class="font-display text-2xl font-bold mb-6 text-white">Entreprenad</h3>
                         <span class="mt-auto font-semibold text-forest text-sm uppercase tracking-wider group-hover:text-white transition-colors">Läs mer &rarr;</span>
                     </button>
                 </div>
@@ -226,9 +217,8 @@
                 </div>
 
                 <div class="relative">
-                     <!-- Decorative border box -->
                     <div class="absolute -inset-4 border-2 border-forest/20 rounded-2xl z-0"></div>
-                    <img src="bild3.jpg"Välskött trädgård" class="relative z-10 w-full h-auto rounded-xl shadow-2xl grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+                    <img src="bild3.jpg" alt="Välskött trädgård" class="relative z-10 w-full h-auto rounded-xl shadow-2xl grayscale-[20%] hover:grayscale-0 transition-all duration-500">
                     <div class="absolute -bottom-6 -right-6 bg-forest text-white p-6 rounded-lg shadow-xl z-20 max-w-xs hidden md:block">
                         <p class="italic text-sm">Så här såg det ut när vi: bla bla bla</p>
                     </div>
@@ -236,7 +226,7 @@
             </div>
         </section>
 
-        <!-- Company Section (Om oss) - UPDATED TEXT -->
+        <!-- Company Section (Om oss) -->
         <section id="company" class="py-24 px-4 bg-darkbg">
             <div class="max-w-4xl mx-auto text-center">
                 <span class="text-forest font-bold tracking-widest uppercase mb-4 block">Om Träd & Mark</span>
@@ -251,36 +241,29 @@
                     </p>
                 </div>
 
-                <!-- Removed the specific stats block as requested -->
-                
                 <div class="mt-12 grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    <!-- Placeholder images for team vibe -->
                     <img src="bild4.jpg" alt="Arbete" class="rounded-lg opacity-70 hover:opacity-100 transition-opacity">
                     <img src="bild7.jpg" alt="Team" class="rounded-lg opacity-70 hover:opacity-100 transition-opacity">
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section (Redesigned) -->
+        <!-- Contact Section -->
         <section id="contact" class="py-24 px-4 bg-[#0A120E] relative overflow-hidden">
-            <!-- Decorative circle -->
             <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-forest/5 rounded-full blur-3xl"></div>
 
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
                     
-                    <!-- Left Side: Contact Card -->
                     <div class="lg:col-span-2 space-y-8">
                         <div>
                             <h2 class="font-display text-4xl text-white font-bold mb-4">Låt oss prata!</h2>
                             <p class="text-sage">Fyll i formuläret eller hör av dig direkt till oss via mejl eller telefon. Vi svarar oftast inom 24 timmar.</p>
                         </div>
 
-                        <!-- Contact Card Box -->
                         <div class="bg-cardbg border border-forest/30 p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
                             <div class="absolute top-0 right-0 w-20 h-20 bg-forest/10 rounded-bl-full transition-all group-hover:bg-forest/20"></div>
                             
-                            <!-- Email -->
                             <div class="mb-8">
                                 <label class="text-xs text-forest uppercase tracking-widest font-bold mb-2 block">Mejla oss direkt</label>
                                 <a href="mailto:info@tradochmark.se" class="text-2xl md:text-3xl font-bold text-white hover:text-forest transition-colors break-words border-b-2 border-transparent hover:border-forest inline-block pb-1">
@@ -288,7 +271,6 @@
                                 </a>
                             </div>
 
-                            <!-- Phone (Placeholder) -->
                             <div class="mb-6">
                                 <label class="text-xs text-forest uppercase tracking-widest font-bold mb-2 block">Telefon</label>
                                 <a href="tel:0709933085" class="text-xl text-beige hover:text-white transition-colors flex items-center">
@@ -303,7 +285,6 @@
                         </div>
                     </div>
 
-                    <!-- Right Side: Form -->
                     <div class="lg:col-span-3 bg-cardbg/50 p-8 md:p-12 rounded-3xl border border-white/5 shadow-sm backdrop-blur-sm">
                         <form id="contact-form" action="https://formspree.io/f/DIN_FORMSPREE_ID_HÄR" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="col-span-2 mb-2">
@@ -369,17 +350,12 @@
             <!-- Details & Content -->
             <div class="lg:col-span-2">
                 <div id="detail-content" class="prose prose-invert prose-lg lg:prose-xl max-w-none text-sage">
-                    <!-- Specific content injected here -->
+                    <!-- Content injected by JS -->
                 </div>
             </div>
 
             <!-- Sidebar -->
             <div class="space-y-8">
-                <div class="bg-cardbg p-8 rounded-2xl border border-white/5">
-                    <h3 class="font-display text-xl font-bold text-forest mb-4">Värt att veta</h3>
-                    <p id="detail-fact" class="text-sm text-beige italic">Vi har lång erfarenhet av just denna typ av projekt.</p>
-                </div>
-                
                 <div class="bg-forest p-8 rounded-2xl shadow-lg">
                     <h3 class="font-display text-xl font-bold text-white mb-4">Intresserad?</h3>
                     <p class="text-sm text-white/80 mb-6 font-semibold">Vi återkommer snabbt med ett förslag.</p>
@@ -418,21 +394,18 @@
     </footer>
 
     <script>
-        // Checkmark Icon string for reuse
         const checkIcon = `<svg class="w-6 h-6 text-forest mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
 
         const serviceData = {
             pruning: {
-                title: "Trädbeskärning",
-                tagline: "Hållbara snitt för en friskare framtid.",
-                fact: "Vi är specialister på säker nedtagning av träd i svåra lägen.",
+                title: "Trädbeskärning & häckklippning",
+                tagline: "",
                 content: `
-                    <h3 class="font-display text-3xl font-bold text-white mb-6">Experthjälp för dina träd</h3>
-                    <p class="mb-8 text-lg leading-relaxed text-beige/90">Att beskära träd kräver både kunskap om växtfysiologi och rätt utrustning. Vi utför allt från försiktig kronrensning till mer omfattande säkerhetsbeskärning. Vi ser till att trädet behåller sin naturliga form samtidigt som vi främjar tillväxt.</p>
-                    
-                    <h4 class="font-bold text-xl mb-4 text-white">Vad ingår?</h4>
+                    <h3 class="font-display text-3xl font-bold text-white mb-6">Vi erbjuder:</h3>
+                    <p class="mb-8 text-lg leading-relaxed text-beige/90">Häck- och Trädbeskärning som utförs av våra TCYK-certifierade trädgårdsmästare vilket säkerställer att just era träd och häckar får en professionell beskärningsinsats vid rätt tidpunkt.</p>
+                    <h4 class="font-bold text-xl mb-4 text-white">Vad ingår? / Vi Kan (?)</h4>
                     <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">${checkIcon}<span>Säkerhetsbeskärning av riskträd</span></li>
+                        <li class="flex items-start">${checkIcon}<span></span>Något värdefullt</li>
                         <li class="flex items-start">${checkIcon}<span>Formklippning av häckar och buskar</span></li>
                         <li class="flex items-start">${checkIcon}<span>Bortforsling av ris och avfall</span></li>
                     </ul>
@@ -440,12 +413,15 @@
             },
             design: {
                 title: "Trädgårdsdesign",
-                tagline: "Vi ritar visionen du kan leva i.",
-                fact: "En välplanerad trädgård kan öka en fastighets värde betydligt.",
+                tagline: "",
                 content: `
-                    <h3 class="font-display text-3xl font-bold text-white mb-6">Från idé till färdig ritning</h3>
-                    <p class="mb-8 text-lg leading-relaxed text-beige/90">Varje tomt är unik. Vi tittar på ljusförhållanden, vind, jordmån och hur du vill använda din yta. Vi skapar ritningar som fungerar både nu och om tio år när växterna vuxit till sig.</p>
-                    
+                    <h3 class="font-display text-3xl font-bold text-white mb-6">Vi erbjuder:</h3>
+                    <p class="mb-8 text-lg leading-relaxed text-beige/90">
+                        Vill ni förändra eller förnya er trädgård eller utemiljö, låt oss ta
+                        hand om det. Vi samarbetar med skickliga anläggare och
+                        landskapsarkitekter för att just ert projekt ska bli lyckat och
+                        utvecklas under många år fram över.
+                    </p>
                     <h4 class="font-bold text-xl mb-4 text-white">Processen:</h4>
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-start">${checkIcon}<span>Personligt platsbesök</span></li>
@@ -455,13 +431,18 @@
                 `
             },
             planting: {
-                title: "Entreprenad & Plantering",
-                tagline: "Starka grunder, grönskande ytor.",
-                fact: "Vi använder moderna maskiner för minsta möjliga markpåverkan.",
+                title: "Plantering & Skötseluppdrag",
+                tagline: "",
                 content: `
-                    <h3 class="font-display text-3xl font-bold text-white mb-6">Markarbeten & Anläggning</h3>
-                    <p class="mb-8 text-lg leading-relaxed text-beige/90">Vi hjälper dig med allt från grundarbetet till den färdiga planteringen. Oavsett om det gäller en ny gräsmatta, stensättning eller stora trädplanteringar så har vi maskinerna och kunskapen.</p>
-                    
+                    <h3 class="font-display text-3xl font-bold text-white mb-6">Vi erbjuder:</h3>
+                    <p class="mb-8 text-lg leading-relaxed text-beige/90">
+                        Våra trädgårdsmästare är behjälpliga med kunskap, engagemang och
+                        pålitlighet både mot bostadsrättsföreningar, privatpersoner och
+                        offentliga beställare vad gäller smått som stort i er trädgård eller
+                        utemiljö.
+                        Vi utför både enstaka skötselinsatser och längre fortlöpande
+                        överenskommelser och avtal till ett konkurrensmässigt pris.
+                    </p>
                     <h4 class="font-bold text-xl mb-4 text-white">Tjänster:</h4>
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-start">${checkIcon}<span>Markberedning och jordförbättring</span></li>
@@ -470,19 +451,26 @@
                     </ul>
                 `
             },
-            maintenance: {
-                title: "Underhåll",
-                tagline: "Njut mer, arbeta mindre.",
-                fact: "Vi sköter grönytor åt både privatpersoner och företag.",
+            entreprenad: {
+                title: "Entreprenad",
+                tagline: "",
                 content: `
-                    <h3 class="font-display text-3xl font-bold text-white mb-6">Löpande skötsel</h3>
-                    <p class="mb-8 text-lg leading-relaxed text-beige/90">Vi erbjuder regelbundet underhåll så att din utemiljö alltid ser representativ ut. Vi kan skräddarsy ett upplägg som passar just dina behov, oavsett om det är veckovis klippning eller vår- och höststädning.</p>
-                    
+                    <h3 class="font-display text-3xl font-bold text-white mb-6">Vi erbjuder:</h3>
+                    <p class="mb-8 text-lg leading-relaxed text-beige/90">
+
+                        Många av Sveriges ledande samhällsbyggare är våra återkommande kunder,
+                        vi har gedigen kunskap inom blågröna infrastrukturprojekt.
+                        vi har rätt utbildningar, ett väl utformat kontrollprogram och vi
+                        levererar alltid en slutprodukt inom ramarna för beställarens tids-,
+                        miljö- och dokumentationskrav.
+
+                        
+                        </p>
                     <h4 class="font-bold text-xl mb-4 text-white">Vi hjälper till med:</h4>
                     <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">${checkIcon}<span>Gräsklippning och trimning</span></li>
-                        <li class="flex items-start">${checkIcon}<span>Ogräsrensning</span></li>
-                        <li class="flex items-start">${checkIcon}<span>Gödsling och jordförbättring</span></li>
+                        <li class="flex items-start">${checkIcon}<span>Kvalitétskontroll</span></li>
+                        <li class="flex items-start">${checkIcon}<span>Något värdefullt</span></li>
+                        <li class="flex items-start">${checkIcon}<span>Något annat värdefullt?</span></li>
                     </ul>
                 `
             }
@@ -506,20 +494,16 @@
 
             document.getElementById('detail-title').innerText = data.title;
             document.getElementById('detail-tagline').innerText = data.tagline;
-            document.getElementById('detail-fact').innerText = data.fact;
             document.getElementById('detail-content').innerHTML = data.content;
 
             window.scrollTo(0, 0);
         }
 
-        // Form handling
         const form = document.getElementById('contact-form');
-        
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = form.querySelector('button');
             const originalText = btn.innerHTML;
-            
             btn.innerHTML = 'Skickar...';
             btn.disabled = true;
 
@@ -529,13 +513,11 @@
                 if(form.action.includes('DIN_FORMSPREE_ID')) {
                     throw new Error("Missing ID");
                 }
-
                 const response = await fetch(form.action, {
                     method: form.method,
                     body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
-
                 if (response.ok) {
                     form.parentElement.innerHTML = `<div class="p-8 text-center text-forest font-bold text-xl">Tack! Vi återkommer snart.</div>`;
                 } else {
@@ -544,7 +526,6 @@
                     btn.disabled = false;
                 }
             } catch (error) {
-                // Demo fallback
                 setTimeout(() => {
                     form.parentElement.innerHTML = `
                         <div class="h-full flex flex-col items-center justify-center text-center p-8">
