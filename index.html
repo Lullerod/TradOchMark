@@ -439,7 +439,13 @@ Vi strävar och arbetar för att vara den självklara samarbetspartnern för all
     </footer>
 
     <script>
-
+        function showPage(pageId) {
+            document.querySelectorAll('.view-section, main').forEach(p => p.classList.add('hidden'));
+            if(pageId === 'home') {
+                document.getElementById('home-page').classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+        }
         function showDetail(serviceKey) {
             const data = serviceData[serviceKey];
             if(!data) return;
