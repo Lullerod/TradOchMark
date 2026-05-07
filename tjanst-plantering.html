@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantering & Skötseluppdrag – Träd & Mark</title>
+    <meta name="description" content="Plantering och löpande skötsel av trädgårdar och utemiljöer i Gävle och Mellansverige. Träd & Mark.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0F1C15',
+                        cardbg: '#1A2F23',
+                        forest: '#4E8B5D',
+                        sage:   '#8DA290',
+                        beige:  '#F5F5DC',
+                        gold:   '#D4AF37',
+                    },
+                    fontFamily: {
+                        sans:    ['"Open Sans"', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-section {
+            background:
+                linear-gradient(to right, rgba(15,28,21,0.90) 0%, rgba(15,28,21,0.50) 100%),
+                url('service31.jpeg');
+            background-size: cover;
+            background-position: center 40%;
+            background-attachment: fixed;
+        }
+        .fade-in { animation: fadeIn .6s ease-out both; }
+        @keyframes fadeIn {
+            from { opacity:0; transform:translateY(14px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .delay-1 { animation-delay: .15s; }
+        .delay-2 { animation-delay: .30s; }
+        .delay-3 { animation-delay: .45s; }
+        .img-hover { transition: opacity .35s, transform .5s; }
+        .img-hover:hover { opacity:1 !important; transform:scale(1.02); }
+        .bc-sep::before { content:'/'; margin:0 .5rem; opacity:.4; }
+    </style>
+</head>
+<body class="bg-darkbg text-beige font-sans selection:bg-forest selection:text-white">
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav class="sticky top-0 z-50 bg-darkbg/95 backdrop-blur shadow-lg border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-24">
+            <a href="index.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                <img src="Logo-beige-bright.png" alt="Träd & Mark Logo" class="h-12 w-auto object-contain">
+                <div class="flex flex-col items-start">
+                    <span class="font-display font-bold text-xl tracking-wider uppercase leading-none">Träd & Mark</span>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#services" class="hover:text-forest transition-colors font-semibold text-sm tracking-wide uppercase">Tjänster</a>
+                <a href="index.html#about"    class="hover:text-forest transition-colors font-semibold text-sm tracking-wide uppercase">Projekt</a>
+                <a href="index.html#company"  class="hover:text-forest transition-colors font-semibold text-sm tracking-wide uppercase">Om oss</a>
+                <a href="index.html#contact"  class="bg-forest text-white px-6 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all shadow-md uppercase tracking-wider text-sm border border-transparent hover:border-white/20">Kontakta Oss</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-beige p-2">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-darkbg border-t border-white/5 px-4 py-6 space-y-4">
+        <a href="index.html#services" class="block font-semibold text-sm uppercase tracking-wide hover:text-forest transition-colors">Tjänster</a>
+        <a href="index.html#about"    class="block font-semibold text-sm uppercase tracking-wide hover:text-forest transition-colors">Projekt</a>
+        <a href="index.html#company"  class="block font-semibold text-sm uppercase tracking-wide hover:text-forest transition-colors">Om oss</a>
+        <a href="index.html#contact"  class="block bg-forest text-white px-6 py-3 rounded-md font-bold text-center uppercase tracking-wider text-sm">Kontakta Oss</a>
+    </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero-section min-h-[65vh] flex items-end pb-20 px-4">
+    <div class="max-w-7xl mx-auto w-full relative z-10">
+        <nav class="flex items-center text-sm text-white/50 mb-6 fade-in">
+            <a href="index.html" class="hover:text-forest transition-colors">Hem</a>
+            <span class="bc-sep">Plantering &amp; Skötseluppdrag</span>
+        </nav>
+        <p class="text-forest font-bold tracking-widest uppercase mb-4 block fade-in delay-1" style="filter:brightness(1.6)">
+            Tjänster
+        </p>
+        <h1 class="font-display text-5xl md:text-7xl font-bold text-white drop-shadow-lg leading-tight fade-in delay-1">
+            Plantering &amp;<br>Skötseluppdrag
+        </h1>
+
+    </div>
+</header>
+
+<!-- ══════════════ MAIN CONTENT ══════════════ -->
+<main class="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+    <div class="lg:col-span-2 space-y-12 fade-in delay-2">
+        <div>
+            <h2 class="font-display text-3xl font-bold text-white mb-6">Vi erbjuder</h2>
+            <p class="text-lg leading-relaxed text-beige/85">
+                Våra trädgårdsmästare är behjälpliga med kunskap, engagemang och pålitlighet både mot bostadsrättsföreningar, privatpersoner och offentliga beställare vad gäller smått som stort i er trädgård eller utemiljö. Vi utför både enstaka skötselinsatser och längre fortlöpande överenskommelser och avtal till ett konkurrensmässigt pris.
+            </p>
+        </div>
+
+
+
+        <!-- Three-image grid matching original detail page layout -->
+        <div class="grid grid-cols-3 gap-4">
+            <img src="service31.jpeg" alt="Plantering" class="w-full h-72 object-cover rounded-xl opacity-75 img-hover">
+            <img src="service32.jpeg" alt="Skötsel"    class="w-full h-72 object-cover rounded-xl opacity-75 img-hover">
+            <img src="service33.png"  alt="Utemiljö"   class="w-full h-72 object-cover rounded-xl opacity-75 img-hover">
+        </div>
+    </div>
+
+    <aside class="space-y-6 fade-in delay-3">
+        <div class="bg-forest p-8 rounded-2xl shadow-lg sticky top-28">
+            <h3 class="font-display text-xl font-bold text-white mb-3">Intresserad?</h3>
+            <p class="text-sm text-white/80 mb-6 leading-relaxed">Vi återkommer snabbt med ett förslag anpassat för er.</p>
+            <a href="index.html#contact" class="block w-full bg-white text-forest py-4 rounded-lg font-bold hover:bg-beige transition-all uppercase tracking-wide text-center">
+                Kontakta oss
+            </a>
+        </div>
+        <div class="bg-cardbg rounded-2xl border border-white/5 p-6">
+            <h4 class="font-display font-bold text-white mb-4 uppercase tracking-wider text-sm">Fler tjänster</h4>
+            <ul class="space-y-3">
+                <li><a href="tjanst-beskarning.html"  class="flex items-center text-sage hover:text-forest transition-colors text-sm"><span class="mr-2">→</span>Trädbeskärning &amp; Häckklippning</a></li>
+                <li><a href="tjanst-design.html"      class="flex items-center text-sage hover:text-forest transition-colors text-sm"><span class="mr-2">→</span>Trädgårdsdesign</a></li>
+                <li><a href="tjanst-entreprenad.html" class="flex items-center text-sage hover:text-forest transition-colors text-sm"><span class="mr-2">→</span>Entreprenad</a></li>
+            </ul>
+        </div>
+    </aside>
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="bg-[#050a07] text-sage py-16 px-4 border-t border-white/5">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+        <div>
+            <img src="Logo-beige-bright.png" alt="Logo" class="h-12 w-auto mx-auto md:mx-0 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+            <p class="text-sm opacity-60">Din helhetspartner för trädgård och entreprenad.</p>
+        </div>
+        <div>
+            <h4 class="font-bold text-white text-lg mb-6 uppercase tracking-wider">Kontakt</h4>
+            <p class="text-sm mb-2">Gävle, Mellansverige</p>
+            <p class="text-sm mb-2"><a href="tel:0709933085" class="hover:text-white">070-993 30 85</a></p>
+            <p class="text-sm"><a href="mailto:info@tradochmark.se" class="hover:text-white">info@tradochmark.se</a></p>
+        </div>
+        <div>
+            <h4 class="font-bold text-white text-lg mb-6 uppercase tracking-wider">Socialt</h4>
+            <div class="flex justify-center md:justify-start space-x-6">
+                <a href="https://www.instagram.com/tradochmark/"  class="opacity-70 hover:opacity-100 hover:text-white transition-all">Instagram</a>
+                <a href="https://www.facebook.com/SAtradochmark/" class="opacity-70 hover:opacity-100 hover:text-white transition-all">Facebook</a>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center text-xs opacity-40">
+        &copy; 2026 Träd &amp; Mark. Alla rättigheter förbehållna.
+    </div>
+</footer>
+
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
