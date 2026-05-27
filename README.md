@@ -11,7 +11,7 @@ Sidan är byggd för statisk webbserver och innehåller 5 sektioner:
 Sidan är byggd med fokus på SEO optimering för att synas bättre utav sökmotorer och med typiskt call-to-action layout
 för högre konvertering.
 
-
+uppdaterat. 
 
 *Kontakt formulär:*
 
